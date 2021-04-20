@@ -28,11 +28,11 @@ class _HomePageState extends State<HomePage> {
 
       /// Inverse
       inverse: false,
-
+      radius:BorderRadius.all(Radius.circular(20)),
       background: Colors.deepOrange,
       key: stateMenu,
       type: SideMenuType.shrinkNSlide,
-      menu: Container(child: Text('SideMenuType.shrinkNSlide')),
+      menu: Center(child: Text('SideMenuType.shrinkNSlide')),
       child: Scaffold(
         appBar: AppBar(
             leading: IconButton(
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                       }
                     })),
             title: Text('Side Menu')),
-        body: Center(child: Text('SideMenuType.shrinkNSlide')),
+        body: Container(child: Text('SideMenuType.shrinkNSlide')),
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.fingerprint, size: 35),
