@@ -18,8 +18,8 @@ class _HomePageState extends State<HomePage> {
           ),
           color: Colors.blue,
           onPressed: () async => await showInfoDialog(context),
-        ),
-      ),
+        )
+      )
     );
   }
 
