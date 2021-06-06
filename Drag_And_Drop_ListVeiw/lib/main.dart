@@ -6,7 +6,7 @@ import 'model/draggable_list.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(home: Home()));
+  runApp(MaterialApp(home: Home(),debugShowCheckedModeBanner: false,));
 }
 
 class Home extends StatefulWidget {
@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: Text('Drag and Drop List')),
+      appBar: AppBar(title: Text('Drag and Drop List',style: TextStyle(color: Colors.green[900]),),backgroundColor: Colors.white,),
       body: DragAndDropLists(
           children: lists,
           onItemReorder: onReOrderListItem,
@@ -39,11 +39,11 @@ class _HomeState extends State<Home> {
           lastItemTargetHeight: 5,
           addLastItemTargetHeightToTop: true,
           listInnerDecoration: BoxDecoration(
-              color: Colors.deepPurple[100],
+              color: Colors.green[50],
               borderRadius: BorderRadius.circular(10)),
           itemDivider: Divider(thickness: .5, height: 0, color: Colors.white),
           itemDecorationWhileDragging:
-              BoxDecoration(color: Colors.deepPurple[300]),
+              BoxDecoration(color: Colors.green[100]),
           listDragHandle: dragHandler(isList: true),
           itemDragHandle: dragHandler()),
     );
@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
     final verticalAlignment = isList
         ? DragHandleVerticalAlignment.top
         : DragHandleVerticalAlignment.center;
-    final color = isList ? Colors.grey[500] : Colors.white;
+    final color = isList ? Colors.grey[500] : Colors.green[900];
 
     return DragHandle(
         verticalAlignment: verticalAlignment,
