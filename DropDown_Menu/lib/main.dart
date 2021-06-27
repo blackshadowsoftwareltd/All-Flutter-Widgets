@@ -19,7 +19,7 @@ class _Drop_Down_menuState extends State<Drop_Down_menu> {
     'Orange',
     'Mango',
   ];
-  var _selected = 'Fruits';
+  var _selected = 'Select Fruits';
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +37,7 @@ class _Drop_Down_menuState extends State<Drop_Down_menu> {
             width: 20,
           ),
           DropdownButton<String>(
-            hint: Text(
+            hint: Text( 
               _selected,
               style: TextStyle(fontSize: 20),
             ),
