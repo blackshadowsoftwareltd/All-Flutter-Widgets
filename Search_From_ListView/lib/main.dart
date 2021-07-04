@@ -9,20 +9,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String searched = '';
-
   TextEditingController controller;
-
+  List<String> filteredCities = [];
   String values;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  static final faker = Faker();
+  static List<String> cityes =
+      List.generate(50, (index) => faker.address.country());
 
   @override
   Widget build(BuildContext context) {
+    print(cityes);
     return Scaffold(
         appBar: AppBar(title: Text('Search in ListView')),
         body: Container(
@@ -45,11 +41,17 @@ class _HomeState extends State<Home> {
                               labelText: 'Search here'))),
                   Expanded(
                       child: ListView.builder(
-                          itemCount: cityes.length,
+                          itemCount: filteredCities.length != 0
+                              ? filteredCities.length
+                              : cityes.length,
                           itemBuilder: (context, index) {
                             return ListTile(
-                              title: Text(cityes[index]),
-                              onTap: () => print(cityes[index]),
+                              title: Text(filteredCities.length != 0
+                                  ? filteredCities[index]
+                                  : cityes[index]),
+                              onTap: () => print(filteredCities.length != 0
+                                  ? filteredCities[index]
+                                  : cityes[index]),
                             );
                           }))
                 ])));
@@ -57,30 +59,15 @@ class _HomeState extends State<Home> {
 
   void result(String query) {
     print('${query}');
-    final citye = cityes.where((city) {
-      final cityes = query.toString();
-      final cityName = city.toLowerCase();
+    var citye = cityes.where((city) {
+      var cityes = query.toLowerCase().toString();
+      var cityName = city.toString().toLowerCase();
+
       return cityName.contains(cityes);
     }).toList();
     setState(() {
-      cityes = citye;
+      filteredCities = citye;
+      print(filteredCities);
     });
   }
-
-  static final faker = Faker();
-  static List<String> cityes =
-      List.generate(400, (index) => faker.address.country());
 }
-//
-// class CityData {
-//   static final faker = Faker();
-//   static final List<String> cityes =
-//       List.generate(400, (index) => faker.address.country());
-//
-//   static List<String> getSuggestions(String query) =>
-//       List.of(cityes).where((city) {
-//         final cityes = query.toString();
-//         final cityName = city.toLowerCase();
-//         return cityName.contains(cityes);
-//       }).toList();
-// }
