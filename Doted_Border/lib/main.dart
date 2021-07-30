@@ -9,7 +9,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+title: Text('Doted Border')
+),
       body: Container(
         width: double.infinity,
         height: double.infinity,

@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           builder: (BuildContext context) {
             return WebView(
               initialUrl:
-                  'https://news.google.com/topstories?hl=en-US&gl=US&ceid=US:en',
+                  'https://cgresettlement.com/',
               javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (WebViewController webController) {
                 _controller.complete(webController);
@@ -53,7 +53,7 @@ class NavigationControls extends StatelessWidget {
           (BuildContext context, AsyncSnapshot<WebViewController> snapShot) {
         final bool webViewReady =
             snapShot.connectionState == ConnectionState.done;
-        final WebViewController controller = snapShot.data;
+        final WebViewController controller = snapShot.data!;
         return Row(
           children: [
             IconButton(
@@ -63,11 +63,12 @@ class NavigationControls extends StatelessWidget {
                     : () async {
                         if (await controller.canGoBack()) {
                           controller.goBack();
-                          Scaffold.of(context).showSnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Loading..........')));
                         } else {
-                          Scaffold.of(context).showSnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('No Back history Item')));
+                        
                         }
                       }),
             IconButton(
@@ -77,10 +78,10 @@ class NavigationControls extends StatelessWidget {
                     : () async {
                         if (await controller.canGoForward()) {
                           controller.goForward();
-                          Scaffold.of(context).showSnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Loading..........')));
                         } else {
-                          Scaffold.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text('No Forward history Item')));
                         }
                       }),
