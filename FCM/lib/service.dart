@@ -39,7 +39,7 @@ class LocalNotificationService {
       ///
       await plugin.show(
           id, message.notification!.title, message.notification!.body, details,
-          payload: message.data['rout']);
+          payload: message.data['time']);
     } on Exception catch (e) {
       print(e.toString());
     }
