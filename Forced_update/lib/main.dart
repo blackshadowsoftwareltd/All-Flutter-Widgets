@@ -31,24 +31,28 @@ class _HomeState extends State<Home> {
     /// only notify the users.
     // newVersion.showAlertIfNecessary(context: context);
 
-    final status = await newVersion.getVersionStatus();
-    newVersion.showUpdateDialog(
-      context: context,
-      versionStatus: status!,
-      dialogTitle: 'Please Update',
-      dialogText:
-          'Your App needs an update. you must need to update this App to use.\nCurrent version is ${status.localVersion}. Store version is ${status.storeVersion}',
+    final status = await newVersion.getVersionStatus().then((value) {
+      if (value!.localVersion != value.storeVersion) {
+        print(
+            'Local version: ${value.localVersion} Store version: ${value.storeVersion}');
 
-      ///
-      updateButtonText: 'Update now',
+        ///
+        newVersion.showUpdateDialog(
+            context: context,
+            versionStatus: value,
+            dialogTitle: 'Please Update',
+            dialogText:
+                'Your App needs an update. you must need to update this App to use.\nCurrent version is ${value.localVersion}. Store version is ${value.storeVersion}',
 
-      ///
-      dismissButtonText: 'Close App',
-      // allowDismissal: false
-      dismissAction: () => SystemNavigator.pop(),
-    );
+            ///
+            updateButtonText: 'Update now',
 
-    print(
-        'Local version: ${status.localVersion} Store version: ${status.storeVersion}');
+            ///
+            dismissButtonText: 'Close App',
+            allowDismissal: false
+            // dismissAction: () => SystemNavigator.pop(),
+            );
+      }
+    });
   }
 }
