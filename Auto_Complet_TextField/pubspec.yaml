@@ -1,4 +1,4 @@
-name: autocomplet_textfield
+name: auto_conplet_textfield
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -18,15 +18,14 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   flutter_typeahead: ^3.1.1
-  faker: ^1.3.0
-
+  http:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
