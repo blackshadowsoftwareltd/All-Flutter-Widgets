@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class TabBars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container( 
+    return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: TabBar(
+        isScrollable: false,
         labelColor: Colors.blue[900],
         unselectedLabelColor: Colors.blue[700],
         labelStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
