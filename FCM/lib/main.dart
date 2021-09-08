@@ -3,9 +3,11 @@ import 'package:fctest/secondScreen.dart';
 import 'package:fctest/service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart'; 
-import 'package:flutter/material.dart'; 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+
+import 'call_services.dart';
 
 final GlobalKey<NavigatorState> glovalNabKey = new GlobalKey<NavigatorState>();
 void main() async {
@@ -80,7 +82,7 @@ class _HomeState extends State<Home> {
         print('${message.data['time']} <> ${message.data['message']}');
       }
       LocalNotificationService.displayNotification(message);
-       glovalNabKey.currentState!.pushNamed('/second');
+      glovalNabKey.currentState!.pushNamed('/second');
     });
 
     /// when the app is background but not closed. not terminated
@@ -137,6 +139,8 @@ class _HomeState extends State<Home> {
 
 /// this method receive message when app background
 Future<void> backgroundHandler(RemoteMessage message) async {
+  await callKeep();
+
   print(message.data.toString());
   print(message.notification!.title);
   print(message.notification!.body);
