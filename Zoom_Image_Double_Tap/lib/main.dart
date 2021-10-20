@@ -78,13 +78,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       },
       child: InteractiveViewer(
 
-          /// must need
+          /// important
           transformationController: transformationController,
 
-          /// it will make image out of the default container size
+          /// it will help to view over the full screen
           // clipBehavior: Clip.none,
           clipBehavior: Clip.none,
-          panEnabled: false,
+           // panEnabled: false, // it will disable moving image
           scaleEnabled: false,
 
           ///
