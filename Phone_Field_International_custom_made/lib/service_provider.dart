@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:international_phone/countries.dart';
+import 'countries.dart';
 
 class ServiceProvider extends ChangeNotifier {
+  String? _phoneNumber;
   String _searchText = '';
   List<Country> _country = List.of(countriesList);
   Country _selected = Country(
@@ -13,6 +14,7 @@ class ServiceProvider extends ChangeNotifier {
       name: 'Bangladesh');
 
   ///
+  String? get phoneNumber => _phoneNumber;
   String get searchText => _searchText;
   List<Country> get country => _country;
   Country get selected => _selected;
@@ -25,6 +27,12 @@ class ServiceProvider extends ChangeNotifier {
 
   void setSelected(Country data) {
     _selected = data;
+    notifyListeners();
+  }
+
+  void setPhoneNumber(String? text) {
+    _phoneNumber = text;
+    print(phoneNumber);
     notifyListeners();
   }
 }
