@@ -36,7 +36,7 @@ class _UserImageState extends State<UserImage> {
               ),
             ),
           ),
-          SizedBox(height: 50),
+        SizedBox(height: 50),
         InkWell(
           onTap: _selectPhoto,
           child: Text(imageUrl != null ? 'Change Photo' : 'Select Photo'),
@@ -81,9 +81,28 @@ class _UserImageState extends State<UserImage> {
     }
 
     /// croping
-    var file = await ImageCropper.cropImage(
+    // var file = await ImageCropper.cropImage(
+    //     sourcePath: pickedFile.path,
+    //     aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
+    File? file = await ImageCropper.cropImage(
         sourcePath: pickedFile.path,
-        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+          CropAspectRatioPreset.ratio3x2,
+          CropAspectRatioPreset.original,
+          CropAspectRatioPreset.ratio4x3,
+          CropAspectRatioPreset.ratio16x9
+        ],
+        androidUiSettings: AndroidUiSettings(
+            toolbarTitle: 'Cropper',
+            toolbarColor: Colors.white,
+            toolbarWidgetColor: Colors.black,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false),
+        iosUiSettings: IOSUiSettings(
+          minimumAspectRatio: 1.0,
+        ));
+
     if (file == null) {
       return;
     }
