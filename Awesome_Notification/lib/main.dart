@@ -43,9 +43,11 @@ class _HomeState extends State<Home> {
                   onPressed: createNotification, child: Text('Siimple')),
               OutlinedButton(
                   onPressed: () {
+                    final _now = TimeOfDay.now();
+                    final _weekday = DateTime.now().weekday;
                     NotificationWeekAndTime? _notificationSchedul =
                         NotificationWeekAndTime(
-                            timeOfDay: TimeOfDay.now(), dayOfTheWeek: 5);
+                            timeOfDay: _now, dayOfTheWeek: _weekday);
                     createReminderNotification(_notificationSchedul);
                   },
                   child: const Text('Schedul')),
@@ -67,3 +69,17 @@ class SecondScreen extends StatelessWidget {
     );
   }
 }
+
+/// day start a MonDay
+//  List<String> weekdays = [
+//    'Mon',
+//    'Tue',
+//    'Wed',
+//    'Thu',
+//    'Fri',
+//    'Sat',
+//    'Sun'
+//  ];
+
+/// to get todays weekday
+// DateTime.now().weekday

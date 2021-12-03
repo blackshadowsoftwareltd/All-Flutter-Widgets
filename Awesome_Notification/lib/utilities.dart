@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
-import 'package:awasome_notificationsa/main.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+
+import 'main.dart';
 
 int createUniqueId() => DateTime.now().microsecondsSinceEpoch.remainder(100000);
 
@@ -12,31 +15,6 @@ class NotificationWeekAndTime {
 
   NotificationWeekAndTime(
       {required this.dayOfTheWeek, required this.timeOfDay});
-
-  // Future<NotificationWeekAndTime?> pickSchedule(context) async {
-  //   List<String> weekdays = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-  //   TimeOfDay? timeOfDay;
-  //   DateTime now = DateTime.now();
-  //   int? selectedDay;
-  //   await showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //             title: const Text('I want to b e reminded every:'),
-  //             content: Wrap(
-  //               alignment: WrapAlignment.center,
-  //               spacing: 3,
-  //               children: [
-  //                 for (int i = 0; i < weekdays.length; i++)
-  //                   OutlinedButton(
-  //                       onPressed: () {
-  //                         selectedDay = i + 1;
-  //                         Navigator.pop(context);
-  //                       },
-  //                       child: Text(weekdays[i]))
-  //               ],
-  //             ),
-  //           ));
-  // }
 }
 
 /// Notification init
@@ -64,7 +42,7 @@ notificationInit() {
           channelDescription: 'Notification channel for basic tests',
 
           /// it will disable to delete notification when the user is swiping right.
-          locked: false,
+          locked: true,
 
           /// notification sound sourch
           // soundSource: 'resource://res_custom_notification',
@@ -102,6 +80,20 @@ listenNotificationsStream(context) {
 
   /// action Stream
   AwesomeNotifications().actionStream.listen((event) {
+    if (event.channelKey == 'basic_channel') {
+      print(event.buttonKeyInput);
+      print(event.title);
+      print(event.body);
+      print(event.payload);
+    }
+    if (event.channelKey == 'scheduled_channel') {
+      print(event.buttonKeyInput);
+      print(event.title);
+      print(event.body);
+      print(event.payload);
+    }
+
+    /// navigate to another screen
     /// iOS
     if (event.channelKey == 'basic_channel' && Platform.isIOS) {
       AwesomeNotifications().getGlobalBadgeCounter().then(
