@@ -33,9 +33,15 @@ Future<void> createReminderNotification(
               '${Emojis.wheater_droplet + Emojis.plant_cactus} scheduled Text Notification !!!',
           body: 'This is a scheduled notification body',
           wakeUpScreen: true,
+          locked: false,
+          displayOnBackground: true,
+          displayOnForeground: true,
           // bigPicture: 'asset://assets/imgage.extnssion'
           notificationLayout: NotificationLayout.Default,
-          payload: {'id': '5', 'contect': 'This is a content'}),
+          payload: {
+            'id': createUniqueId().toString(),
+            'contect': 'This is a content'
+          }),
       actionButtons: [
         NotificationActionButton(
             key: 'MARK_DONE',

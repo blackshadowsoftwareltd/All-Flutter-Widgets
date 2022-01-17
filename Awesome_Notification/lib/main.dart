@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
                   },
                   child: const Text('Schedul')),
               const OutlinedButton(
-                  onPressed: clearNotifcation, child: Text('clear')),
+                  onPressed: clearNotifcation, child: Text('clear'))
             ])));
   }
 }
