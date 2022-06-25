@@ -7,6 +7,7 @@ class DrawerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const _radius = 12.0;
     return TweenAnimationBuilder(
       duration: const Duration(milliseconds: 1500),
       curve: Curves.easeInOutCirc,
@@ -29,7 +30,7 @@ class DrawerView extends StatelessWidget {
                         primary: Colors.white,
                         onPrimary: Colors.lightGreen.shade100,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                            borderRadius: BorderRadius.circular(_radius + 5))),
                     child: SizedBox(
                       width: double.infinity,
                       height: 120,
@@ -48,6 +49,26 @@ class DrawerView extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Expanded(
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(_radius),
+                          child: Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                  color: Colors.white30,
+                                  blurRadius: value + (value),
+                                  spreadRadius: 0,
+                                  offset: const Offset(0, 0))
+                            ]),
+                            child: ListView.builder(
+                                padding: const EdgeInsets.all(8),
+                                itemCount: 15,
+                                itemBuilder: (_, i) => _button(i + 1)),
+                          ),
+                        )),
+                  ),
                 ]),
               ),
             ),
@@ -56,4 +77,26 @@ class DrawerView extends StatelessWidget {
       },
     );
   }
+
+  Widget _button(int i) => Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.zero,
+              primary: Colors.white38,
+              onPrimary: Colors.lightGreen.shade100,
+              shadowColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12))),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Text('Button  $i',
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold)),
+          ),
+        ),
+      );
 }
