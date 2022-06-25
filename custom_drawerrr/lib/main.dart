@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'drawer.dart';
 
 void main() => runApp(const MaterialApp(home: Home()));
 
@@ -19,24 +18,7 @@ class Home extends StatelessWidget {
             fit: BoxFit.cover),
       ),
       drawerScrimColor: Colors.transparent,
-      drawer: TweenAnimationBuilder(
-          duration: const Duration(seconds: 1),
-          curve: Curves.easeInOutCirc,
-          tween: Tween<double>(begin: 0, end: 5),
-          onEnd: () {
-            print('end');
-          },
-          builder: (_, double value, __) {
-            return BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: value, sigmaY: value),
-              child: Container(
-                color: Colors.white,
-                width: 200,
-                alignment: Alignment.center,
-                child: const Text('Remon'),
-              ),
-            );
-          }),
+      drawer:const DrawerView() ,
       onDrawerChanged: (value) {
         print(value);
       },
