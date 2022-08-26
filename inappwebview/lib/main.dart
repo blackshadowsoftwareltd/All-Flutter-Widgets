@@ -28,7 +28,7 @@ Future main() async {
       await serviceWorkerController
           .setServiceWorkerClient(AndroidServiceWorkerClient(
         shouldInterceptRequest: (request) async {
-          print(request);
+          print(request); 
           return null;
         },
       ));
