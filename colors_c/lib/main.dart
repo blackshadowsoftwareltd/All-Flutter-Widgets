@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(App());
-}
-
-class App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
-  }
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: HomePage(),
+  ));
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +18,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: [
+          children: const [
             PrimaryColorOptions(),
             MaterialColorShades(),
             PrimaryColorOptions(),
@@ -35,6 +30,8 @@ class HomePage extends StatelessWidget {
 }
 
 class PrimaryColorOptions extends StatelessWidget {
+  const PrimaryColorOptions({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,6 +54,8 @@ class PrimaryColorOptions extends StatelessWidget {
 }
 
 class MaterialColorShades extends StatelessWidget {
+  const MaterialColorShades({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -77,10 +76,10 @@ class MaterialColorShades extends StatelessWidget {
   }
 
   List<Widget> _buildShadesContainers(MaterialColor materialColor) {
-    List<Widget> _shadesContainers = [];
+    List<Widget> shadesContainers = [];
     AppColors.getMaterialColorShades(materialColor).forEach(
       (materialColorShadeIndex, materialColorShade) {
-        _shadesContainers.add(Expanded(
+        shadesContainers.add(Expanded(
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -103,7 +102,7 @@ class MaterialColorShades extends StatelessWidget {
         ));
       },
     );
-    return _shadesContainers;
+    return shadesContainers;
   }
 }
 
@@ -117,14 +116,13 @@ class AppColors {
   ];
 
   static List<Color> get primaryColors {
-    List<Color> _primaryColors = [];
+    List<Color> primaryColors = [];
 
     for (String hexColor in hexColors) {
-      Color _color = Color(int.parse('0xff$hexColor'));
-      _primaryColors.add(_color);
+      Color color = Color(int.parse('0xff$hexColor'));
+      primaryColors.add(color);
     }
-
-    return _primaryColors;
+    return primaryColors;
   }
 
   static Color getShade(Color color, {bool darker = false, double value = .1}) {
@@ -139,7 +137,7 @@ class AppColors {
   }
 
   static MaterialColor getMaterialColorFromColor(Color color) {
-    Map<int, Color> _colorShades = {
+    Map<int, Color> colorShades = {
       50: getShade(color, value: 0.5),
       100: getShade(color, value: 0.4),
       200: getShade(color, value: 0.3),
@@ -151,15 +149,15 @@ class AppColors {
       800: getShade(color, value: 0.2, darker: true),
       900: getShade(color, value: 0.25, darker: true),
     };
-    return MaterialColor(color.value, _colorShades);
+    return MaterialColor(color.value, colorShades);
   }
 
   static List<MaterialColor> get materialColors {
-    List<MaterialColor> _materialColors = [];
+    List<MaterialColor> materialColors = [];
     for (Color primaryColor in primaryColors) {
-      _materialColors.add(getMaterialColorFromColor(primaryColor));
+      materialColors.add(getMaterialColorFromColor(primaryColor));
     }
-    return _materialColors;
+    return materialColors;
   }
 
   static Map<int, Color> getMaterialColorShades(MaterialColor materialColor) {
