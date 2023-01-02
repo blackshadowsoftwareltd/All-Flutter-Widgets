@@ -1,4 +1,4 @@
-import 'package:colors_c/color.dart';
+import 'package:colors_c/color.dart' as color show getMaterialColorFromColor;
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    printer();
   }
 
   @override
@@ -27,6 +26,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Material Color Shades'),
+        backgroundColor: color.getMaterialColorFromColor(
+            Colors.deepOrange)[800], //! HERE IS THE USE OF THE Shaded Color
       ),
       body: Center(
         child: Column(
