@@ -1,3 +1,4 @@
+import 'package:colors_c/color.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,8 +8,19 @@ void main() {
   ));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    printer();
+  }
 
   @override
   Widget build(BuildContext context) {
