@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../modules/themes/provider/theme.p.dart';
+import '../../modules/themes/theme.dart';
+
 class AutoCompleteTextField<T extends Object> extends StatelessWidget {
   const AutoCompleteTextField({
     Key? key,
@@ -38,8 +41,8 @@ class AutoCompleteTextField<T extends Object> extends StatelessWidget {
       fieldViewBuilder: (_, ctrl, node, __) => TextFormField(
         validator: validator,
         decoration: decoration ??
-            InputDecoration(
-              labelStyle: const TextStyle(fontSize: 18),
+            inputDecoration.copyWith(
+              labelStyle: theme.textTheme.labelLarge,
               labelText: label,
             ),
         onChanged: onChanged,
@@ -60,10 +63,9 @@ class AutoCompleteTextField<T extends Object> extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 1),
                 child: ListTile(
                   title: Text(displayStringForOption(datum[i])),
-                  tileColor: Colors.green,
+                  tileColor: theme.secondaryHeaderColor,
                   visualDensity: VisualDensity.compact,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
+                  // shape: roundedRectangleBorder15,
                   onTap: () => select(datum[i]),
                   contentPadding: itemPadding,
                   dense: true,
@@ -75,4 +77,11 @@ class AutoCompleteTextField<T extends Object> extends StatelessWidget {
       },
     );
   }
+}
+
+final dummyBanks = List.generate(1000, (i) => DummyBank('Bank $i'));
+
+class DummyBank {
+  final String name;
+  const DummyBank(this.name);
 }
