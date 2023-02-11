@@ -71,10 +71,3 @@ class AutoCompleteTextField<T extends Object> extends StatelessWidget {
     );
   }
 }
-
-final dummyBanks = List.generate(1000, (i) => DummyBank('Bank $i'));
-
-class DummyBank {
-  final String name;
-  const DummyBank(this.name);
-}
