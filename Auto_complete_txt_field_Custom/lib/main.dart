@@ -14,24 +14,23 @@ class Home extends StatelessWidget {
       body: Column(children: [
         AutoCompleteTextField(
           optionsBuilder: (v) {
-            print(v);
+            debugPrint(v.toString());
             return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
           },
         ),
-        Text('data'),
-        AutoCompleteTextField<GL>(
+        AutoCompleteTextField<Country>(
           displayStringForOption: (v) => v.name,
-          initialValue: const TextEditingValue(text: 'initial'),
+          initialValue: const TextEditingValue(text: ''),
           decoration: const InputDecoration(
             suffixIcon: Icon(Icons.clear_all),
           ),
           onChanged: (v) async {
-            print(v);
+            debugPrint(v.toString());
           },
           onSelected: (v) async {
-            print(v);
+            debugPrint(v.toString());
           },
-          optionsBuilder: (v) => gls.where(
+          optionsBuilder: (v) => countries.where(
               (e) => e.name.toLowerCase().contains(v.text.toLowerCase())),
         )
       ]),
@@ -39,46 +38,59 @@ class Home extends StatelessWidget {
   }
 }
 
-const gls = [
-  GL(id: 1, name: 'GL 1'),
-  GL(id: 2, name: 'GL 2'),
-  GL(id: 3, name: 'GL 3'),
-  GL(id: 4, name: 'GL 4'),
-  GL(id: 5, name: 'GL 5'),
-  GL(id: 6, name: 'GL 6'),
-  GL(id: 7, name: 'GL 7'),
-  GL(id: 8, name: 'GL 8'),
-  GL(id: 9, name: 'GL 9'),
-  GL(id: 10, name: 'GL 10'),
-  GL(id: 11, name: 'GL 11'),
-  GL(id: 12, name: 'GL 12'),
-  GL(id: 13, name: 'GL 13'),
-  GL(id: 14, name: 'GL 14'),
-  GL(id: 15, name: 'GL 15'),
-  GL(id: 16, name: 'GL 16'),
-  GL(id: 17, name: 'GL 17'),
-  GL(id: 18, name: 'GL 18'),
-  GL(id: 19, name: 'GL 19'),
-  GL(id: 20, name: 'GL 20'),
-  GL(id: 21, name: 'GL 21'),
-  GL(id: 22, name: 'GL 22'),
-  GL(id: 23, name: 'GL 23'),
-  GL(id: 24, name: 'GL 24'),
-  GL(id: 25, name: 'GL 25'),
-  GL(id: 26, name: 'GL 26'),
-  GL(id: 27, name: 'GL 27'),
-  GL(id: 28, name: 'GL 28'),
-  GL(id: 29, name: 'GL 29'),
-  GL(id: 30, name: 'GL 30'),
-  GL(id: 31, name: 'GL 31'),
-  GL(id: 32, name: 'GL 32'),
-  GL(id: 33, name: 'GL 33'),
-  GL(id: 34, name: 'GL 34'),
-  GL(id: 35, name: 'GL 35'),
+const countries = [
+  Country(id: 1, name: 'Afghanistan'),
+  Country(id: 2, name: 'Albania'),
+  Country(id: 3, name: 'Algeria'),
+  Country(id: 4, name: 'Andorra'),
+  Country(id: 5, name: 'Angola'),
+  Country(id: 6, name: 'Antigua and Barbuda'),
+  Country(id: 7, name: 'Argentina'),
+  Country(id: 8, name: 'Armenia'),
+  Country(id: 9, name: 'Australia'),
+  Country(id: 10, name: 'Austria'),
+  Country(id: 11, name: 'Azerbaijan'),
+  Country(id: 12, name: 'Bahamas'),
+  Country(id: 13, name: 'Bahrain'),
+  Country(id: 14, name: 'Bangladesh'),
+  Country(id: 15, name: 'Barbados'),
+  Country(id: 16, name: 'Belarus'),
+  Country(id: 17, name: 'Belgium'),
+  Country(id: 18, name: 'Belize'),
+  Country(id: 19, name: 'Benin'),
+  Country(id: 20, name: 'Bhutan'),
+  Country(id: 21, name: 'Bolivia'),
+  Country(id: 22, name: 'Bosnia and Herzegovina'),
+  Country(id: 23, name: 'Botswana'),
+  Country(id: 24, name: 'Brazil'),
+  Country(id: 25, name: 'Brunei'),
+  Country(id: 26, name: 'Bulgaria'),
+  Country(id: 27, name: 'Burkina Faso'),
+  Country(id: 28, name: 'Burundi'),
+  Country(id: 29, name: 'Cabo Verde'),
+  Country(id: 30, name: 'Cambodia'),
+  Country(id: 31, name: 'Cameroon'),
+  Country(id: 32, name: 'Canada'),
+  Country(id: 33, name: 'Central African Republic (CAR)'),
+  Country(id: 34, name: 'Chad'),
+  Country(id: 35, name: 'Chile'),
+  Country(id: 36, name: 'China'),
+  Country(id: 37, name: 'Colombia'),
+  Country(id: 38, name: 'Comoros'),
+  Country(id: 39, name: 'Democratic Republic of the Congo'),
+  Country(id: 40, name: 'Republic of the Congo'),
+  Country(id: 41, name: 'Costa Rica'),
+  Country(id: 42, name: "Cote d'Ivoire"),
+  Country(id: 43, name: 'Croatia'),
+  Country(id: 44, name: 'Cuba'),
+  Country(id: 45, name: 'Cyprus'),
+  Country(id: 46, name: 'Czech Republic'),
+  Country(id: 47, name: 'Denmark'),
+  Country(id: 48, name: 'Djibouti'),
 ];
 
-class GL {
-  const GL({required this.id, required this.name});
+class Country {
   final int id;
   final String name;
+  const Country({required this.id, required this.name});
 }

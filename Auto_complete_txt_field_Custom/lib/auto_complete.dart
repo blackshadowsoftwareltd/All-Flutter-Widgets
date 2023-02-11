@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../modules/themes/provider/theme.p.dart';
-import '../../modules/themes/theme.dart';
-
 class AutoCompleteTextField<T extends Object> extends StatelessWidget {
   const AutoCompleteTextField({
     Key? key,
@@ -40,11 +37,7 @@ class AutoCompleteTextField<T extends Object> extends StatelessWidget {
       optionsBuilder: optionsBuilder,
       fieldViewBuilder: (_, ctrl, node, __) => TextFormField(
         validator: validator,
-        decoration: decoration ??
-            inputDecoration.copyWith(
-              labelStyle: theme.textTheme.labelLarge,
-              labelText: label,
-            ),
+        decoration: decoration,
         onChanged: onChanged,
         controller: ctrl,
         focusNode: node,
@@ -63,7 +56,7 @@ class AutoCompleteTextField<T extends Object> extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 1),
                 child: ListTile(
                   title: Text(displayStringForOption(datum[i])),
-                  tileColor: theme.secondaryHeaderColor,
+                  tileColor: Colors.blueGrey.shade200,
                   visualDensity: VisualDensity.compact,
                   // shape: roundedRectangleBorder15,
                   onTap: () => select(datum[i]),
