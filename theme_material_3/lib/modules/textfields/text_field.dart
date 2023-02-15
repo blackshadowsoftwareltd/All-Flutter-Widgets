@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TextFiledScreen extends StatelessWidget {
-  const TextFiledScreen({super.key});
+class TextFieleScreen extends StatelessWidget {
+  const TextFieleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
