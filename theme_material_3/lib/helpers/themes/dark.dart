@@ -28,7 +28,7 @@ import 'package:flutter/services.dart' show Brightness, SystemUiOverlayStyle;
 import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
 
 import '../colors/methods.dart' show swColor;
-import '/colors/colors.dart'
+import '../colors/colors.dart'
     show
         black,
         black87,
