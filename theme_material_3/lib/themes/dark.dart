@@ -27,7 +27,8 @@ import 'package:flutter/material.dart'
 import 'package:flutter/services.dart' show Brightness, SystemUiOverlayStyle;
 import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
 
-import '../../constants/colors/colors.dart'
+import '../colors/methods.dart' show swColor;
+import '/colors/colors.dart'
     show
         black,
         black87,
@@ -42,10 +43,9 @@ import '../../constants/colors/colors.dart'
         red,
         red400,
         teal,
+        teal400,
         white,
         white70;
-import '../../functions/colors_util.dart' show getMaterialColorFromColor;
-import '../themes.dart' show swColor;
 
 SystemUiOverlayStyle darkUiConfig = SystemUiOverlayStyle(
   systemNavigationBarIconBrightness: Brightness.light,
@@ -174,14 +174,10 @@ TextTheme textTheme = TextTheme(
   ),
   titleMedium: TextStyle(color: white, fontSize: 14),
   titleSmall: TextStyle(color: black, fontSize: 14),
-  bodyLarge: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.bold,
-      color: getMaterialColorFromColor(blueGrey)[800]),
-  bodyMedium: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.bold,
-      color: getMaterialColorFromColor(teal)[400]),
+  bodyLarge:
+      TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: blueGrey800),
+  bodyMedium:
+      TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: teal400),
   labelLarge: TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.bold,
