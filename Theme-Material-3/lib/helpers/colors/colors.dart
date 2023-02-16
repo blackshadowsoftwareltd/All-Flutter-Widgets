@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart' show Color, Colors, MaterialState;
+import 'package:flutter/material.dart'
+    show Color, Colors, MaterialState, MaterialStateProperty;
 
 import 'methods.dart' show hexToColor;
 
@@ -96,3 +97,8 @@ Color getTealColor(Set<MaterialState> states) {
   }
   return teal400;
 }
+
+MaterialStateProperty<Color?> colorToMatColor(Color c) =>
+    MaterialStateProperty.all<Color>(c);
+MaterialStateProperty<double?> doubleToMatDouble(double c) =>
+    MaterialStateProperty.all<double>(c);
