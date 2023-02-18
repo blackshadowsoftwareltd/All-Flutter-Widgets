@@ -5,6 +5,30 @@ class FloatingActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        const Text('Floating Action Buttons'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FloatingActionButton.small(
+              heroTag: 'small',
+              onPressed: () {},
+              child: const Icon(Icons.add),
+            ),
+            FloatingActionButton(
+                heroTag: 'normal',
+                onPressed: () {},
+                child: const Icon(Icons.add)),
+            FloatingActionButton.extended(
+              heroTag: 'extended',
+              onPressed: () {},
+              label: const Text('Button'),
+            ),
+          ],
+        ),
+        const Divider(),
+      ],
+    );
   }
 }

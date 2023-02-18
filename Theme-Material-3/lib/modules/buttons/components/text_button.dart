@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-class ElevatedButtons extends StatelessWidget {
-  const ElevatedButtons({super.key});
+class TextButtons extends StatelessWidget {
+  const TextButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text('Elevated Buttons'),
+        const Text('Text Buttons'),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(onPressed: () {}, child: const Text('Elevated')),
-            ElevatedButton.icon(
+            TextButton(onPressed: () {}, child: const Text('Button')),
+            TextButton.icon(
               onPressed: () {},
               label: const Text('Add'),
               icon: const Icon(Icons.add),
             ),
           ],
         ),
-        const Divider(),
+        const Divider()
       ],
     );
   }

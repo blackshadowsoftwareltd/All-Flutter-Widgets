@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:theme_material_3/helpers/themes/color_schemes.dart';
+import '../../themes/color_schemes.dart' show lightColorScheme, darkColorScheme;
 
 ///? Light
 ElevatedButtonThemeData lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-  padding: const EdgeInsets.symmetric(horizontal: 8),
+  padding: const EdgeInsets.symmetric(horizontal: 10),
   foregroundColor: lightColorScheme.onTertiary,
   surfaceTintColor: lightColorScheme.tertiary,
   backgroundColor: lightColorScheme.tertiary,
@@ -16,6 +16,7 @@ ElevatedButtonThemeData lightElevatedButtonTheme = ElevatedButtonThemeData(
 ///? Dark
 ElevatedButtonThemeData darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+  padding: const EdgeInsets.symmetric(horizontal: 10),
   foregroundColor: darkColorScheme.onTertiary,
   surfaceTintColor: lightColorScheme.tertiary,
   backgroundColor: darkColorScheme.tertiary,
